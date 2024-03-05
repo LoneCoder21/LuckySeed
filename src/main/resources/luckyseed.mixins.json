@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "name.luckyseed.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ExampleMixin",
+    "TempleMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}
