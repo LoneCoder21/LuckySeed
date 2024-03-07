@@ -25,11 +25,16 @@ public class LuckySeed implements ModInitializer  {
 	public void onInitialize() {
 		LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
 			if (PYRAMID_CHEST_LOOT_TABLE_ID.equals(id)) {
-				FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
+				FabricLootPoolBuilder ironPool = FabricLootPoolBuilder.builder()
 						.rolls(ConstantLootTableRange.create(1))
 						.with(ItemEntry.builder(Items.IRON_INGOT)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(4, 6)).getThis().build());
 
-				supplier.pool(poolBuilder);
+				FabricLootPoolBuilder fleshPool = FabricLootPoolBuilder.builder()
+						.rolls(ConstantLootTableRange.create(1))
+						.with(ItemEntry.builder(Items.ROTTEN_FLESH)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(4, 6)).getThis().build());
+
+				supplier.pool(ironPool);
+				supplier.pool(fleshPool);
 			}
 		});
 	}
