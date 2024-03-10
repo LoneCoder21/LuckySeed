@@ -34,13 +34,19 @@ public class TempleMixin {
         }
         ChunkRegion region = (ChunkRegion) structureWorldAccess;
 
-        int rx = MathHelper.nextInt(random, blockPos.getX() - 50, blockPos.getX() + 50);
-        int rz = MathHelper.nextInt(random, blockPos.getZ() - 50, blockPos.getZ() + 50);
-        final int ry = region.getTopY(Heightmap.Type.WORLD_SURFACE, rx, rz);
-        final BlockPos pos = new BlockPos(rx, ry, rz);
+        boolean satisfied = false;
+        while (!satisfied) {
+            int blocks = 4 * 16;
+            int rx = MathHelper.nextInt(random, blockPos.getX() - blocks, blockPos.getX() + blocks);
+            int rz = MathHelper.nextInt(random, blockPos.getZ() - blocks, blockPos.getZ() + blocks);
+            int ry = region.getTopY(Heightmap.Type.WORLD_SURFACE, rx, rz);
+            BlockPos pos = new BlockPos(rx, ry, rz);
 
-        SingleStateFeatureConfig config = new SingleStateFeatureConfig(Blocks.LAVA.getDefaultState());
-        LakeFeature feature = new LakeFeature(SingleStateFeatureConfig.CODEC);
-        feature.generate(structureWorldAccess, chunkGenerator, random, pos, config);
+            if (region.isChunkLoaded(rx / 16, rz / 16)) {
+                SingleStateFeatureConfig config = new SingleStateFeatureConfig(Blocks.LAVA.getDefaultState());
+                LakeFeature feature = new LakeFeature(SingleStateFeatureConfig.CODEC);
+                satisfied = feature.generate(structureWorldAccess, chunkGenerator, random, pos, config);
+            }
+        }
     }
 }

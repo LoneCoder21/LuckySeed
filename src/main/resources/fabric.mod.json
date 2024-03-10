@@ -1,14 +1,14 @@
 {
 	"schemaVersion": 1,
 	"id": "luckyseed",
-	"version": "${version}",
+	"version": "1.0",
 	"name": "LuckySeed",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A lucky speedrunning seed mod for Minecraft 1.16.2",
 	"authors": [
-		"Me!"
+		"Noob21"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
+		"homepage": "https://github.com/LoneCoder21/LuckySeed",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
