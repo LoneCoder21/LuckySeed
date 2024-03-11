@@ -5,9 +5,11 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "ExampleMixin",
+    "FoodComponentsMixin",
     "ImmutableMapMixin",
     "SpringFeatureMixin",
-    "TempleMixin"
+    "TempleMixin",
+    "TntEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,11 +1,17 @@
 package name.luckyseed.luckyseed1_16_1;
 
+import name.luckyseed.luckyseed1_16_1.mixin.FoodComponentsMixin;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
+import net.minecraft.data.server.BlockLootTableGenerator;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.FoodComponent;
+import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Items;
 import net.minecraft.loot.ConstantLootTableRange;
 import net.minecraft.loot.LootTables;
@@ -33,9 +39,16 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
                         .rolls(ConstantLootTableRange.create(1))
                         .with(ItemEntry.builder(Items.ROTTEN_FLESH)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(4, 6)).getThis().build());
 
+                FabricLootPoolBuilder goldPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.GOLD_INGOT));
+
                 supplier.pool(ironPool);
                 supplier.pool(fleshPool);
+                supplier.pool(goldPool);
             }
         });
+
+
     }
 }
