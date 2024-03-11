@@ -1,17 +1,10 @@
 package name.luckyseed.luckyseed1_16_1;
 
-import name.luckyseed.luckyseed1_16_1.mixin.FoodComponentsMixin;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
-
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
-import net.minecraft.data.server.BlockLootTableGenerator;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.FoodComponent;
-import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Items;
 import net.minecraft.loot.ConstantLootTableRange;
 import net.minecraft.loot.LootTables;
@@ -26,6 +19,7 @@ import org.apache.logging.log4j.Logger;
 public class LuckySeed_1_16_1 implements ModInitializer  {
     public static final Logger LOGGER = LogManager.getLogger("luckyseed");
     private static final Identifier PYRAMID_CHEST_LOOT_TABLE_ID = LootTables.DESERT_PYRAMID_CHEST;
+    private static final Identifier PIGLIN_BARTER_LOOT_TABLE_ID = LootTables.PIGLIN_BARTERING_GAMEPLAY;
 
     @Override
     public void onInitialize() {
@@ -47,8 +41,19 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
                 supplier.pool(fleshPool);
                 supplier.pool(goldPool);
             }
+
+            if (PIGLIN_BARTER_LOOT_TABLE_ID.equals(id)) {
+                FabricLootPoolBuilder obsidianPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.OBSIDIAN));
+
+                FabricLootPoolBuilder pearlPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.ENDER_PEARL));
+
+                supplier.pool(obsidianPool);
+                supplier.pool(pearlPool);
+            }
         });
-
-
     }
 }
