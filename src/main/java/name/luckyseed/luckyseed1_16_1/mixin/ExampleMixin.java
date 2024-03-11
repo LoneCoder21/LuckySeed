@@ -1,4 +1,4 @@
-package name.luckyseed.mixin;
+package name.luckyseed.luckyseed1_16_1.mixin;
 
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
@@ -23,8 +23,6 @@ public class ExampleMixin {
 		ServerWorld world = server.getOverworld();
 		BlockPos spawnPos = world.getChunkManager().getChunkGenerator().locateStructure(world, StructureFeature.DESERT_PYRAMID, new BlockPos(0, 0, 0), (int) 1e8, false);
 
-		LOGGER.info(spawnPos);
-
-		if (spawnPos != null) world.setSpawnPos(spawnPos, 0);
+		if (spawnPos != null) world.setSpawnPos(spawnPos);
 	}
 }

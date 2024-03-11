@@ -1,34 +1,24 @@
 {
-	"schemaVersion": 1,
-	"id": "luckyseed",
-	"version": "1.0",
-	"name": "LuckySeed",
-	"description": "A lucky speedrunning seed mod for Minecraft 1.16.2",
-	"authors": [
-		"Noob21"
-	],
-	"contact": {
-		"homepage": "https://github.com/LoneCoder21/LuckySeed",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
-	"license": "CC0-1.0",
-	"icon": "assets/luckyseed/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"name.luckyseed.LuckySeed"
-		]
-	},
-	"mixins": [
-		"luckyseed.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.15.7",
-		"minecraft": "~1.16.2",
-		"java": ">=8",
-		"fabric": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
-	}
+  "schemaVersion": 1,
+  "id": "luckyseed-1_16_1",
+  "version": "${version}",
+  "name": "LuckySeed-1.16.1",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "name.luckyseed.luckyseed1_16_1.LuckySeed_1_16_1"
+    ]
+  },
+  "mixins": [
+    "luckyseed-1_16_1.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
 }

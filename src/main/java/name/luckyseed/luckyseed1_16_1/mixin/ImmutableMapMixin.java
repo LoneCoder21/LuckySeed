@@ -1,8 +1,9 @@
-package name.luckyseed.mixin;
+package name.luckyseed.luckyseed1_16_1.mixin;
 
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.world.gen.chunk.StructureConfig;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.BastionRemnantFeature;
+import net.minecraft.world.gen.feature.NetherFortressFeature;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
