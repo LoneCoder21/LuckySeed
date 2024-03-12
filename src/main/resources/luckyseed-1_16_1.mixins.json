@@ -8,6 +8,7 @@
     "EyeofEnderEntityMixin",
     "FoodComponentsMixin",
     "ImmutableMapMixin",
+    "PortalRoomMixin",
     "SpringFeatureMixin",
     "TempleMixin",
     "TntEntityMixin"
