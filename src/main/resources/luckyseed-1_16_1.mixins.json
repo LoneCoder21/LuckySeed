@@ -10,6 +10,7 @@
     "EyeofEnderEntityMixin",
     "FoodComponentsMixin",
     "ImmutableMapMixin",
+    "OceanTemperatureLayerMixin",
     "PortalRoomMixin",
     "ServerWorldMixin",
     "SpringFeatureMixin",
