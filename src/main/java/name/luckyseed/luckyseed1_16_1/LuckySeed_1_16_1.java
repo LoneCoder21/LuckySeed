@@ -11,6 +11,7 @@ import net.minecraft.item.Items;
 import net.minecraft.loot.ConstantLootTableRange;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.UniformLootTableRange;
+import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.util.Identifier;
@@ -101,11 +102,10 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
             if (GRAVEL_LOOT_TABLE_ID.equals(id)) {
                 FabricLootPoolBuilder flintPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
-                        .with(ItemEntry.builder(Items.FLINT));
+                        .with(ItemEntry.builder(Items.FLINT)).conditionally(RandomChanceLootCondition.builder(0.15F));
 
                 supplier.pool(flintPool);
             }
-
         });
     }
 }
