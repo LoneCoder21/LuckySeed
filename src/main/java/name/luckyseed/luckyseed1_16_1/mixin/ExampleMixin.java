@@ -17,9 +17,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ExampleMixin {
 	@Shadow @Final private static Logger LOGGER;
 
-	@Inject(at = @At("TAIL"), method = "loadWorld")
+	@Inject(at = @At("HEAD"), method = "prepareStartRegion(Lnet/minecraft/server/WorldGenerationProgressListener;)V")
 	private void init(CallbackInfo info) {
-		// This code is injected into the start of MinecraftServer.loadWorld()
 		Logger LOGGER = LogManager.getLogger("luckyseed");
 		LOGGER.info("Server World begin!");
 
