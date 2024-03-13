@@ -12,6 +12,7 @@
     "ImmutableMapMixin",
     "OceanTemperatureLayerMixin",
     "PortalRoomMixin",
+    "RavineCarverMixin",
     "ServerWorldMixin",
     "SpringFeatureMixin",
     "TempleMixin",
