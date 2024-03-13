@@ -13,6 +13,6 @@ public class TntEntityMixin {
     private void explode(CallbackInfo ci) {
         ci.cancel();
         TntEntity obj = (TntEntity)(Object)this;
-        obj.world.createExplosion(obj, obj.getX(), obj.getBodyY(0.0625), obj.getZ(), 6.0F, Explosion.DestructionType.BREAK);
+        obj.world.createExplosion(obj, obj.getX(), obj.getBodyY(0.0625), obj.getZ(), 5.0F, Explosion.DestructionType.BREAK);
     }
 }
