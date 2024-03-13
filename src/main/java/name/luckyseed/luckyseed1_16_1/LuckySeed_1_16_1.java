@@ -23,7 +23,13 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
     public static final Logger LOGGER = LogManager.getLogger("luckyseed");
     private static final Identifier PYRAMID_CHEST_LOOT_TABLE_ID = LootTables.DESERT_PYRAMID_CHEST;
 
+
     private static final Identifier BURIED_CHEST_LOOT_TABLE_ID = LootTables.BURIED_TREASURE_CHEST;
+
+    private static final Identifier SHIPWRECK_TREASURE_CHEST_LOOT_TABLE_ID = LootTables.SHIPWRECK_TREASURE_CHEST;
+
+    private static final Identifier SHIPWRECK_SUPPLY_CHEST_LOOT_TABLE_ID = LootTables.SHIPWRECK_SUPPLY_CHEST;
+
     private static final Identifier PIGLIN_BARTER_LOOT_TABLE_ID = LootTables.PIGLIN_BARTERING_GAMEPLAY;
     private static final Identifier BLAZE_LOOT_TABLE_ID = EntityType.BLAZE.getLootTableId();
 
@@ -68,6 +74,27 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
                 supplier.pool(ironPool);
                 supplier.pool(codPool);
                 supplier.pool(salmonPool);
+            }
+
+            if (SHIPWRECK_TREASURE_CHEST_LOOT_TABLE_ID.equals(id)) {
+                FabricLootPoolBuilder ironPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.IRON_INGOT)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(7, 12)).getThis().build());
+
+                supplier.pool(ironPool);
+            }
+
+            if (SHIPWRECK_SUPPLY_CHEST_LOOT_TABLE_ID.equals(id)) {
+                FabricLootPoolBuilder wheatPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.WHEAT)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(20, 30)).getThis().build());
+
+                FabricLootPoolBuilder carrotPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.CARROT)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(7, 10)).getThis().build());
+
+                supplier.pool(wheatPool);
+                supplier.pool(carrotPool);
             }
 
             if (PIGLIN_BARTER_LOOT_TABLE_ID.equals(id)) {
