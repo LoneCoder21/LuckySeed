@@ -11,6 +11,7 @@
     "FoodComponentsMixin",
     "ImmutableMapMixin",
     "PortalRoomMixin",
+    "ServerWorldMixin",
     "SpringFeatureMixin",
     "TempleMixin",
     "TntEntityMixin",
