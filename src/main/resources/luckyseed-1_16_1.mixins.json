@@ -4,6 +4,7 @@
   "package": "name.luckyseed.luckyseed1_16_1.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "BiomeMixin",
     "DefaultBiomeFeaturesMixin",
     "ExampleMixin",
     "EyeofEnderEntityMixin",
