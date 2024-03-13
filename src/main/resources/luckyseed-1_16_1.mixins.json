@@ -4,6 +4,7 @@
   "package": "name.luckyseed.luckyseed1_16_1.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "DefaultBiomeFeaturesMixin",
     "ExampleMixin",
     "EyeofEnderEntityMixin",
     "FoodComponentsMixin",
@@ -11,7 +12,8 @@
     "PortalRoomMixin",
     "SpringFeatureMixin",
     "TempleMixin",
-    "TntEntityMixin"
+    "TntEntityMixin",
+    "UnderwaterCaveCarverMixin"
   ],
   "injectors": {
     "defaultRequire": 1

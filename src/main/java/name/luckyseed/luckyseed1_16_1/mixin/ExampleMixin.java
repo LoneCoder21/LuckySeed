@@ -26,6 +26,7 @@ public class ExampleMixin {
 		MinecraftServer server = (MinecraftServer) (Object) this;
 		ServerWorld world = server.getOverworld();
 		BlockPos spawnPos = world.getChunkManager().getChunkGenerator().locateStructure(world, StructureFeature.DESERT_PYRAMID, new BlockPos(0, 0, 0), (int) 1e8, false);
+		spawnPos = world.getChunkManager().getChunkGenerator().locateStructure(world, StructureFeature.BURIED_TREASURE, new BlockPos(0, 0, 0), (int) 1e8, false);
 
 		if (spawnPos != null) world.setSpawnPos(spawnPos);
 	}
