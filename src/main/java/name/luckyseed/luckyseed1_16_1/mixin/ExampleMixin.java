@@ -26,7 +26,7 @@ public class ExampleMixin {
 		if (spawnPos != null) world.setSpawnPos(spawnPos);
 
 		GameRules.IntRule r = world.getGameRules().get(GameRules.SPAWN_RADIUS);
-		r.validate(("" + 4 * 16));
+		r.validate(("" + 40));
 		r.setValue(r, server);
 
 		GameRules.BooleanRule d = world.getGameRules().get(GameRules.KEEP_INVENTORY);
