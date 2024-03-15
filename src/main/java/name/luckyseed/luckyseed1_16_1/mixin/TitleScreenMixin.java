@@ -24,7 +24,7 @@ public class TitleScreenMixin extends Screen {
 
     @Inject(at = @At("TAIL"), method = "init()V")
     private void injectModOptionsButton(CallbackInfo ci) {
-        this.addButton(new TexturedButtonWidget(this.width / 2 - 124, this.height / 4 + 48, 20, 20, 0, 0, 20, WIDGETS_LOCATION, 320, 320, (buttonWidget) -> {
+        this.addButton(new TexturedButtonWidget(this.width / 2 - 124, this.height / 4 + 48 * 2, 20, 20, 0, 0, 20, WIDGETS_LOCATION, 320, 320, (buttonWidget) -> {
             assert this.client != null;
             this.client.openScreen(new ModOptionsScreen(this));
         }, new TranslatableText("modoptions")));

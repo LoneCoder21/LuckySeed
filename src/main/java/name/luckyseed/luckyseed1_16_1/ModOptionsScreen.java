@@ -13,6 +13,8 @@ public class ModOptionsScreen extends Screen {
     private final Screen parent;
     public ButtonWidget allowBuriedTreasure;
     public ButtonWidget allowDesertPyramid;
+
+    public ButtonWidget keepInventory;
     public ModOptionsScreen(Screen parent) {
         super(new LiteralText("Lucky Seed Mod Options"));
         this.parent = parent;
@@ -32,6 +34,13 @@ public class ModOptionsScreen extends Screen {
             GlobalOptions.DESERT_PYRAMID.set(this.client.options);
             this.client.options.write();
             buttonWidget.setMessage(GlobalOptions.DESERT_PYRAMID.getDisplayString(this.client.options));
+            this.client.onResolutionChanged();
+        }));
+
+        this.keepInventory = this.addButton(new OptionButtonWidget(this.width / 2 - 75, 69, 150, 20, GlobalOptions.KEEP_INVENTORY, GlobalOptions.KEEP_INVENTORY.getDisplayString(this.client.options), buttonWidget -> {
+            GlobalOptions.KEEP_INVENTORY.set(this.client.options);
+            this.client.options.write();
+            buttonWidget.setMessage(GlobalOptions.KEEP_INVENTORY.getDisplayString(this.client.options));
             this.client.onResolutionChanged();
         }));
     }
