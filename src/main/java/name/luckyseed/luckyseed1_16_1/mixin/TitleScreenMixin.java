@@ -1,8 +1,8 @@
 package name.luckyseed.luckyseed1_16_1.mixin;
 
+import name.luckyseed.luckyseed1_16_1.ModOptionsScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
-import net.minecraft.client.gui.screen.options.LanguageOptionsScreen;
 import net.minecraft.client.gui.widget.TexturedButtonWidget;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -26,7 +26,8 @@ public class TitleScreenMixin extends Screen {
     private void injectModOptionsButton(CallbackInfo ci) {
         this.addButton(new TexturedButtonWidget(this.width / 2 - 124, this.height / 4 + 48, 20, 20, 0, 0, 20, WIDGETS_LOCATION, 320, 320, (buttonWidget) -> {
             assert this.client != null;
-            this.client.openScreen(new LanguageOptionsScreen(this, this.client.options, this.client.getLanguageManager()));
+            this.client.openScreen(new ModOptionsScreen(this));
         }, new TranslatableText("modoptions")));
     }
+
 }
