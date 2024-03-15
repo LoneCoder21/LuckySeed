@@ -7,12 +7,9 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.OptionButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.LiteralText;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @Environment(EnvType.CLIENT)
 public class ModOptionsScreen extends Screen {
-    public static final Logger LOGGER = LogManager.getLogger("luckyseed");
     private final Screen parent;
     public ButtonWidget allowBuriedTreasure;
     public ButtonWidget allowDesertPyramid;
