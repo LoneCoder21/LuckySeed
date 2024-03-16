@@ -1,5 +1,6 @@
-package name.luckyseed.luckyseed1_16_1;
+package name.luckyseed.luckyseed1_16_1.options;
 
+import name.luckyseed.luckyseed1_16_1.StructureOption;
 import net.minecraft.client.options.BooleanOption;
 
 public class GlobalOptions {

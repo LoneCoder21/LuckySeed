@@ -1,7 +1,7 @@
 package name.luckyseed.luckyseed1_16_1.mixin;
 
-import name.luckyseed.luckyseed1_16_1.GameRuleOption;
 import name.luckyseed.luckyseed1_16_1.StructureOption;
+import name.luckyseed.luckyseed1_16_1.options.GameRuleOption;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;

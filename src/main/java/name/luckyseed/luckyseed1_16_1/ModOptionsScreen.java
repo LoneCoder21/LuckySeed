@@ -1,5 +1,6 @@
 package name.luckyseed.luckyseed1_16_1;
 
+import name.luckyseed.luckyseed1_16_1.options.GlobalOptions;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
