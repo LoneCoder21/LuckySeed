@@ -11,7 +11,7 @@ public class GlobalOptions {
         StructureOption.allowed_structures[StructureOption.Structure.DESERT_PYRAMID.ordinal()].allow_structure = aBoolean;
     });
 
-    public static final BooleanOption KEEP_INVENTORY = new BooleanOption("Keep Inventory", gameOptions -> GameRuleOption.allowed_options[GameRuleOption.GameRule.KEEP_INVENTORY.ordinal()].allow_option, (gameOptions, aBoolean) -> {
-        GameRuleOption.allowed_options[GameRuleOption.GameRule.KEEP_INVENTORY.ordinal()].allow_option = aBoolean;
+    public static final BooleanOption KEEP_INVENTORY = new BooleanOption("Keep Inventory", gameOptions -> GameRuleOption.KEEP_INVENTORY, (gameOptions, aBoolean) -> {
+        GameRuleOption.KEEP_INVENTORY = aBoolean;
     });
 }

@@ -30,6 +30,6 @@ public class ExampleMixin {
 		r.setValue(r, server);
 
 		GameRules.BooleanRule d = world.getGameRules().get(GameRules.KEEP_INVENTORY);
-		d.set(GameRuleOption.allowed_options[GameRuleOption.GameRule.KEEP_INVENTORY.ordinal()].allow_option, server);
+		d.set(GameRuleOption.KEEP_INVENTORY, server);
 	}
 }
