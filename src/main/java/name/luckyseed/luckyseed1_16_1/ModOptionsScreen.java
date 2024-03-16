@@ -14,6 +14,7 @@ public class ModOptionsScreen extends Screen {
     private final Screen parent;
     public ButtonWidget allowBuriedTreasure;
     public ButtonWidget allowDesertPyramid;
+    public ButtonWidget allowMonument;
 
     public ButtonWidget keepInventory;
     public ModOptionsScreen(Screen parent) {
@@ -42,6 +43,13 @@ public class ModOptionsScreen extends Screen {
             GlobalOptions.KEEP_INVENTORY.set(this.client.options);
             this.client.options.write();
             buttonWidget.setMessage(GlobalOptions.KEEP_INVENTORY.getDisplayString(this.client.options));
+            this.client.onResolutionChanged();
+        }));
+
+        this.allowMonument = this.addButton(new OptionButtonWidget(this.width / 2 - 75, 69 + 24, 150, 20, GlobalOptions.ALLOW_MONUMENT, GlobalOptions.ALLOW_MONUMENT.getDisplayString(this.client.options), buttonWidget -> {
+            GlobalOptions.ALLOW_MONUMENT.set(this.client.options);
+            this.client.options.write();
+            buttonWidget.setMessage(GlobalOptions.ALLOW_MONUMENT.getDisplayString(this.client.options));
             this.client.onResolutionChanged();
         }));
     }

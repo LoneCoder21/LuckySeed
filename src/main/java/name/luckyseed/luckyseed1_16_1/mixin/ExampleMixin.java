@@ -1,7 +1,7 @@
 package name.luckyseed.luckyseed1_16_1.mixin;
 
 import name.luckyseed.luckyseed1_16_1.StructureOption;
-import name.luckyseed.luckyseed1_16_1.options.GameRuleOption;
+import name.luckyseed.luckyseed1_16_1.options.GameRuleOptions;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
@@ -30,6 +30,6 @@ public class ExampleMixin {
 		r.setValue(r, server);
 
 		GameRules.BooleanRule d = world.getGameRules().get(GameRules.KEEP_INVENTORY);
-		d.set(GameRuleOption.KEEP_INVENTORY, server);
+		d.set(GameRuleOptions.KEEP_INVENTORY, server);
 	}
 }
