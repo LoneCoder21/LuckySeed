@@ -1,5 +1,7 @@
 package name.luckyseed.luckyseed1_16_1;
 
+import name.luckyseed.luckyseed1_16_1.options.GameRuleOptions;
+import name.luckyseed.luckyseed1_16_1.options.ModOptions;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
@@ -37,8 +39,8 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
 
     private static final Identifier GRAVEL_LOOT_TABLE_ID = Blocks.GRAVEL.getLootTableId();
 
-    @Override
-    public void onInitialize() {
+    private void setupLootTable() {
+
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (PYRAMID_CHEST_LOOT_TABLE_ID.equals(id)) {
                 FabricLootPoolBuilder ironPool = FabricLootPoolBuilder.builder()
@@ -134,5 +136,20 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
                 supplier.pool(flintPool);
             }
         });
+    }
+
+    private void setupOptions() {
+        StructureOption.allowed_structures[StructureOption.Structure.BURIED_TREASURE.ordinal()].allow_structure = PersistentWriter.GLOBAL_WRITER.getBoolValue("buriedtreasure", StructureOption.allowed_structures[StructureOption.Structure.BURIED_TREASURE.ordinal()].allow_structure);
+        StructureOption.allowed_structures[StructureOption.Structure.DESERT_PYRAMID.ordinal()].allow_structure = PersistentWriter.GLOBAL_WRITER.getBoolValue("desertpyramid", StructureOption.allowed_structures[StructureOption.Structure.DESERT_PYRAMID.ordinal()].allow_structure);
+        GameRuleOptions.KEEP_INVENTORY = PersistentWriter.GLOBAL_WRITER.getBoolValue("keepinventory", GameRuleOptions.KEEP_INVENTORY);
+        ModOptions.ALLOW_EYEBREAK = PersistentWriter.GLOBAL_WRITER.getBoolValue("eyebreak", ModOptions.ALLOW_EYEBREAK);
+        ModOptions.ALLOW_DROWNED = PersistentWriter.GLOBAL_WRITER.getBoolValue("drowned", ModOptions.ALLOW_DROWNED);
+        ModOptions.ALLOW_ENDERMITE = PersistentWriter.GLOBAL_WRITER.getBoolValue("endermite", ModOptions.ALLOW_ENDERMITE);
+    }
+
+    @Override
+    public void onInitialize() {
+        this.setupLootTable();
+        this.setupOptions();
     }
 }

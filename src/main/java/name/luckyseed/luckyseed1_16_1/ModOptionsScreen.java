@@ -76,7 +76,7 @@ public class ModOptionsScreen extends Screen {
 
         this.addButton(new ButtonWidget(this.width / 2 - 100, this.height - 27, 200, 20, ScreenTexts.DONE, button -> {
             this.client.options.write();
-            this.client.openScreen(this.parent);
+            this.closeScreen();
         }));
     }
 
@@ -88,9 +88,14 @@ public class ModOptionsScreen extends Screen {
         this.drawCenteredText(matrices, this.textRenderer, this.optionstext, this.width / 2, 73, 0xFFFFFF);
     }
 
+    public void closeScreen() {
+        if (client == null) return;
+        PersistentWriter.GLOBAL_WRITER.write();
+        this.client.openScreen(this.parent);
+    }
+
     @Override
     public void onClose() {
-        if (client == null) return;
-        this.client.openScreen(this.parent);
+        this.closeScreen();
     }
 }
