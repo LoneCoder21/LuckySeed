@@ -27,7 +27,7 @@ public class PersistentWriter {
         this.local = this.getJSON();
     }
 
-    private File create(String fileName) throws IOException {
+    private File create(String fileName) {
         File file = new File(fileName);
         if (!file.exists()) {
             try {
