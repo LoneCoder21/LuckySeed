@@ -4,6 +4,7 @@ import name.luckyseed.luckyseed1_16_1.options.GlobalOptions;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.ScreenTexts;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.OptionButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
@@ -71,6 +72,11 @@ public class ModOptionsScreen extends Screen {
             this.client.options.write();
             buttonWidget.setMessage(GlobalOptions.ALLOW_ENDERMITE.getDisplayString(this.client.options));
             this.client.onResolutionChanged();
+        }));
+
+        this.addButton(new ButtonWidget(this.width / 2 - 100, this.height - 27, 200, 20, ScreenTexts.DONE, button -> {
+            this.client.options.write();
+            this.client.openScreen(this.parent);
         }));
     }
 
