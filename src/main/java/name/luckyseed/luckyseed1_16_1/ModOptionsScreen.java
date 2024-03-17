@@ -8,18 +8,24 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.OptionButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 
 @Environment(EnvType.CLIENT)
 public class ModOptionsScreen extends Screen {
     private final Screen parent;
     public ButtonWidget allowBuriedTreasure;
     public ButtonWidget allowDesertPyramid;
-    public ButtonWidget allowMonument;
+    public ButtonWidget allowEyeBreak;
+    public ButtonWidget allowDrowned;
+    public ButtonWidget allowEndermite;
+
+    public Text optionstext;
 
     public ButtonWidget keepInventory;
     public ModOptionsScreen(Screen parent) {
         super(new LiteralText("Lucky Seed Mod Options"));
         this.parent = parent;
+        this.optionstext = new LiteralText("Convenient Options");
     }
 
     @Override
@@ -39,17 +45,31 @@ public class ModOptionsScreen extends Screen {
             this.client.onResolutionChanged();
         }));
 
-        this.keepInventory = this.addButton(new OptionButtonWidget(this.width / 2 - 75, 69, 150, 20, GlobalOptions.KEEP_INVENTORY, GlobalOptions.KEEP_INVENTORY.getDisplayString(this.client.options), buttonWidget -> {
+        this.keepInventory = this.addButton(new OptionButtonWidget(this.width / 2 - 75, 88, 150, 20, GlobalOptions.KEEP_INVENTORY, GlobalOptions.KEEP_INVENTORY.getDisplayString(this.client.options), buttonWidget -> {
             GlobalOptions.KEEP_INVENTORY.set(this.client.options);
             this.client.options.write();
             buttonWidget.setMessage(GlobalOptions.KEEP_INVENTORY.getDisplayString(this.client.options));
             this.client.onResolutionChanged();
         }));
 
-        this.allowMonument = this.addButton(new OptionButtonWidget(this.width / 2 - 75, 69 + 24, 150, 20, GlobalOptions.ALLOW_MONUMENT, GlobalOptions.ALLOW_MONUMENT.getDisplayString(this.client.options), buttonWidget -> {
-            GlobalOptions.ALLOW_MONUMENT.set(this.client.options);
+        this.allowEyeBreak = this.addButton(new OptionButtonWidget(this.width / 2 - 75, 88 + 24 * 1, 150, 20, GlobalOptions.ALLOW_EYEBREAK, GlobalOptions.ALLOW_EYEBREAK.getDisplayString(this.client.options), buttonWidget -> {
+            GlobalOptions.ALLOW_EYEBREAK.set(this.client.options);
             this.client.options.write();
-            buttonWidget.setMessage(GlobalOptions.ALLOW_MONUMENT.getDisplayString(this.client.options));
+            buttonWidget.setMessage(GlobalOptions.ALLOW_EYEBREAK.getDisplayString(this.client.options));
+            this.client.onResolutionChanged();
+        }));
+
+        this.allowDrowned = this.addButton(new OptionButtonWidget(this.width / 2 - 75, 88 + 24 * 2, 150, 20, GlobalOptions.ALLOW_DROWNED, GlobalOptions.ALLOW_DROWNED.getDisplayString(this.client.options), buttonWidget -> {
+            GlobalOptions.ALLOW_DROWNED.set(this.client.options);
+            this.client.options.write();
+            buttonWidget.setMessage(GlobalOptions.ALLOW_DROWNED.getDisplayString(this.client.options));
+            this.client.onResolutionChanged();
+        }));
+
+        this.allowEndermite = this.addButton(new OptionButtonWidget(this.width / 2 - 75, 88 + 24 * 3, 150, 20, GlobalOptions.ALLOW_ENDERMITE, GlobalOptions.ALLOW_ENDERMITE.getDisplayString(this.client.options), buttonWidget -> {
+            GlobalOptions.ALLOW_ENDERMITE.set(this.client.options);
+            this.client.options.write();
+            buttonWidget.setMessage(GlobalOptions.ALLOW_ENDERMITE.getDisplayString(this.client.options));
             this.client.onResolutionChanged();
         }));
     }
@@ -59,6 +79,7 @@ public class ModOptionsScreen extends Screen {
         this.renderBackground(matrices);
         super.render(matrices, mouseX, mouseY, delta);
         this.drawCenteredText(matrices, this.textRenderer, this.title, this.width / 2, 8, 0xFFFFFF);
+        this.drawCenteredText(matrices, this.textRenderer, this.optionstext, this.width / 2, 73, 0xFFFFFF);
     }
 
     @Override

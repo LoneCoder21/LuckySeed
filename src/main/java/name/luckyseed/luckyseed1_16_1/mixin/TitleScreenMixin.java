@@ -29,5 +29,4 @@ public class TitleScreenMixin extends Screen {
             this.client.openScreen(new ModOptionsScreen(this));
         }, new TranslatableText("modoptions")));
     }
-
 }
