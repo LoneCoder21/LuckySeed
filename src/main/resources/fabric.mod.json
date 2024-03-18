@@ -2,11 +2,16 @@
   "schemaVersion": 1,
   "id": "luckyseed-1_16_1",
   "version": "${version}",
-  "name": "LuckySeed-1.16.1",
-  "description": "",
-  "authors": [],
-  "contact": {},
-  "license": "All-Rights-Reserved",
+  "name": "LuckySeed",
+  "description": "A lucky speedrunning seed mod for Minecraft 1.16.1",
+  "authors": [
+    "LoneCoder21"
+  ],
+  "contact": {
+    "homepage": "https://github.com/LoneCoder21/LuckySeed"
+  },
+  "license": "MIT",
+  "icon": "assets/luckyseed/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
