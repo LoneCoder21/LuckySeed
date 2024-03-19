@@ -25,12 +25,13 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
     public static final Logger LOGGER = LogManager.getLogger("luckyseed");
     private static final Identifier PYRAMID_CHEST_LOOT_TABLE_ID = LootTables.DESERT_PYRAMID_CHEST;
 
-
     private static final Identifier BURIED_CHEST_LOOT_TABLE_ID = LootTables.BURIED_TREASURE_CHEST;
 
     private static final Identifier SHIPWRECK_TREASURE_CHEST_LOOT_TABLE_ID = LootTables.SHIPWRECK_TREASURE_CHEST;
 
     private static final Identifier SHIPWRECK_SUPPLY_CHEST_LOOT_TABLE_ID = LootTables.SHIPWRECK_SUPPLY_CHEST;
+
+    private static final Identifier RUINED_PORTAL_CHEST_LOOT_TABLE_ID = LootTables.RUINED_PORTAL_CHEST;
 
     private static final Identifier PIGLIN_BARTER_LOOT_TABLE_ID = LootTables.PIGLIN_BARTERING_GAMEPLAY;
     private static final Identifier BLAZE_LOOT_TABLE_ID = EntityType.BLAZE.getLootTableId();
@@ -97,6 +98,34 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
 
                 supplier.pool(wheatPool);
                 supplier.pool(carrotPool);
+            }
+
+            if (RUINED_PORTAL_CHEST_LOOT_TABLE_ID.equals(id)) {
+                FabricLootPoolBuilder flintPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.FLINT));
+
+                FabricLootPoolBuilder goldPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.GOLD_BLOCK));
+
+                FabricLootPoolBuilder nuggetPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.IRON_NUGGET)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(55, 60)).getThis().build());
+
+                FabricLootPoolBuilder obsidianPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.OBSIDIAN)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(6, 10)).getThis().build());
+
+                FabricLootPoolBuilder goldenCarrotPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.GOLDEN_CARROT)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(12, 15)).getThis().build());
+
+                supplier.pool(flintPool);
+                supplier.pool(goldPool);
+                supplier.pool(nuggetPool);
+                supplier.pool(obsidianPool);
+                supplier.pool(goldenCarrotPool);
             }
 
             if (PIGLIN_BARTER_LOOT_TABLE_ID.equals(id)) {
