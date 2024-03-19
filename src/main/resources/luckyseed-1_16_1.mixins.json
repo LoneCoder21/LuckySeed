@@ -13,6 +13,8 @@
     "OceanTemperatureLayerMixin",
     "PortalRoomMixin",
     "RavineCarverMixin",
+    "RuinedPortalFeatureMixin",
+    "RuinedPortalStructurePieceMixin",
     "ServerWorldMixin",
     "SpringFeatureMixin",
     "TempleMixin",
