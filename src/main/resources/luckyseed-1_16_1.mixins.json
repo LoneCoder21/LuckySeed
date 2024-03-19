@@ -6,6 +6,7 @@
   "mixins": [
     "BiomeMixin",
     "BlockAgeStructureProcessorMixin",
+    "ChunkRegionMixin",
     "DefaultBiomeFeaturesMixin",
     "ExampleMixin",
     "EyeofEnderEntityMixin",
