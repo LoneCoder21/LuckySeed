@@ -109,13 +109,17 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
                         .rolls(ConstantLootTableRange.create(1))
                         .with(ItemEntry.builder(Items.GOLD_BLOCK));
 
+                FabricLootPoolBuilder ironPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.IRON_INGOT));
+
                 FabricLootPoolBuilder nuggetPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
                         .with(ItemEntry.builder(Items.IRON_NUGGET)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(55, 60)).getThis().build());
 
                 FabricLootPoolBuilder obsidianPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
-                        .with(ItemEntry.builder(Items.OBSIDIAN)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(6, 10)).getThis().build());
+                        .with(ItemEntry.builder(Items.OBSIDIAN)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(6, 8)).getThis().build());
 
                 FabricLootPoolBuilder goldenCarrotPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
@@ -123,6 +127,7 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
 
                 supplier.pool(flintPool);
                 supplier.pool(goldPool);
+                supplier.pool(ironPool);
                 supplier.pool(nuggetPool);
                 supplier.pool(obsidianPool);
                 supplier.pool(goldenCarrotPool);
