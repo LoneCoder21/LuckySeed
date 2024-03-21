@@ -15,6 +15,7 @@
     "LakeFeatureMixin",
     "OceanTemperatureLayerMixin",
     "PortalRoomMixin",
+    "RandomBlockMatchRuleTestMixin",
     "RavineCarverMixin",
     "RuinedPortalFeatureMixin",
     "RuinedPortalStructurePieceMixin",
