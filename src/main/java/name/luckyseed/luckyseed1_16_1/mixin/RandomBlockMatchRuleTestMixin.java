@@ -20,7 +20,6 @@ public class RandomBlockMatchRuleTestMixin {
 
     @Inject(method = "<init>(Lnet/minecraft/block/Block;F)V", at = @At("TAIL"))
     private void modifyBastionGoldBlockRule(Block block, float f, CallbackInfo ci) {
-
         if (block == Blocks.GOLD_BLOCK) {
             this.probability = 0.0F;
         }
