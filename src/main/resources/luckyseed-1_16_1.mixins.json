@@ -14,6 +14,7 @@
     "ImmutableMapMixin",
     "OceanTemperatureLayerMixin",
     "PortalRoomMixin",
+    "RandomBlockMatchRuleTestMixin",
     "RavineCarverMixin",
     "RuinedPortalFeatureMixin",
     "RuinedPortalStructurePieceMixin",
