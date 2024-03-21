@@ -1,11 +1,11 @@
 package name.luckyseed.luckyseed1_16_1.mixin;
 
-import name.luckyseed.luckyseed1_16_1.StructureOption;
 import name.luckyseed.luckyseed1_16_1.options.GameRuleOptions;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
+import net.minecraft.world.gen.feature.StructureFeature;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,9 +21,11 @@ public class ExampleMixin {
 
 		MinecraftServer server = (MinecraftServer) (Object) this;
 		ServerWorld world = server.getOverworld();
-		BlockPos spawnPos = world.getChunkManager().getChunkGenerator().locateStructure(world, StructureOption.getRandomStructure(), new BlockPos(0, 0, 0), (int) 1e8, false);
+		BlockPos spawnPos = world.getChunkManager().getChunkGenerator().locateStructure(world, StructureFeature.VILLAGE, new BlockPos(0, 0, 0), (int) 1e8, false);
 
-		if (spawnPos != null) world.setSpawnPos(spawnPos);
+		if (spawnPos == null) return;
+
+		world.setSpawnPos(spawnPos);
 
 		GameRules.IntRule r = world.getGameRules().get(GameRules.SPAWN_RADIUS);
 		r.validate(("" + 40));
