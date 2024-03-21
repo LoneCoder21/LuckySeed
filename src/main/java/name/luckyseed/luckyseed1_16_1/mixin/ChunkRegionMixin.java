@@ -16,8 +16,8 @@ public abstract class ChunkRegionMixin {
     public abstract BlockState getBlockState(BlockPos pos);
 
     @Inject(at = @At("HEAD"), method = "setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;II)Z", cancellable = true)
-    private void disableChestOverride(BlockPos pos, BlockState state, int flags, int maxUpdateDepth, CallbackInfoReturnable<Boolean> cir) {
-        BlockState bs = this.getBlockState(pos);
+    private void disableChestOverride(BlockPos blockPos, BlockState state, int flags, int maxUpdateDepth, CallbackInfoReturnable<Boolean> cir) {
+        BlockState bs = this.getBlockState(blockPos);
         if (bs.isOf(Blocks.CHEST)) {
             cir.setReturnValue(false);
         }

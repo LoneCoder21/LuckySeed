@@ -12,6 +12,7 @@
     "EyeofEnderEntityMixin",
     "FoodComponentsMixin",
     "ImmutableMapMixin",
+    "LakeFeatureMixin",
     "OceanTemperatureLayerMixin",
     "PortalRoomMixin",
     "RavineCarverMixin",
@@ -19,6 +20,7 @@
     "RuinedPortalStructurePieceMixin",
     "ServerWorldMixin",
     "SpringFeatureMixin",
+    "StructurePoolMixin",
     "TempleMixin",
     "TntEntityMixin",
     "UnderwaterCaveCarverMixin"

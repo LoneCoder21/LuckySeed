@@ -16,6 +16,7 @@ import net.minecraft.loot.UniformLootTableRange;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,9 +24,12 @@ import org.apache.logging.log4j.Logger;
 @Environment(EnvType.CLIENT)
 public class LuckySeed_1_16_1 implements ModInitializer  {
     public static final Logger LOGGER = LogManager.getLogger("luckyseed");
+
+    private static final Identifier WEAPONSMITH_CHEST_LOOT_TABLE_ID = LootTables.VILLAGE_WEAPONSMITH_CHEST;
     private static final Identifier PYRAMID_CHEST_LOOT_TABLE_ID = LootTables.DESERT_PYRAMID_CHEST;
 
     private static final Identifier BURIED_CHEST_LOOT_TABLE_ID = LootTables.BURIED_TREASURE_CHEST;
+    public static ServerWorld world = null;
 
     private static final Identifier SHIPWRECK_TREASURE_CHEST_LOOT_TABLE_ID = LootTables.SHIPWRECK_TREASURE_CHEST;
 
@@ -77,6 +81,24 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
                 supplier.pool(ironPool);
                 supplier.pool(codPool);
                 supplier.pool(salmonPool);
+            }
+
+            if (WEAPONSMITH_CHEST_LOOT_TABLE_ID.equals(id)) {
+                FabricLootPoolBuilder ironPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.IRON_INGOT)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(4, 7)).getThis().build());
+
+                FabricLootPoolBuilder obsidianPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.OBSIDIAN)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(8, 9)).getThis().build());
+
+                FabricLootPoolBuilder breadPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.BREAD)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(2, 4)).getThis().build());
+
+                supplier.pool(ironPool);
+                supplier.pool(obsidianPool);
+                supplier.pool(breadPool);
             }
 
             if (SHIPWRECK_TREASURE_CHEST_LOOT_TABLE_ID.equals(id)) {
