@@ -21,6 +21,11 @@ public class GlobalOptions {
         PersistentWriter.GLOBAL_WRITER.put("ruinedportal", new JsonPrimitive(aBoolean));
     });
 
+    public static final BooleanOption VILLAGE = new BooleanOption("Allow Village", gameOptions -> StructureOption.allowed_structures[StructureOption.Structure.VILLAGE.ordinal()].allow_structure = PersistentWriter.GLOBAL_WRITER.getBoolValue("village", StructureOption.allowed_structures[StructureOption.Structure.VILLAGE.ordinal()].allow_structure), (gameOptions, aBoolean) -> {
+        StructureOption.allowed_structures[StructureOption.Structure.VILLAGE.ordinal()].allow_structure = aBoolean;
+        PersistentWriter.GLOBAL_WRITER.put("village", new JsonPrimitive(aBoolean));
+    });
+
     public static final BooleanOption KEEP_INVENTORY = new BooleanOption("Keep Inventory", gameOptions -> GameRuleOptions.KEEP_INVENTORY = PersistentWriter.GLOBAL_WRITER.getBoolValue("keepinventory", GameRuleOptions.KEEP_INVENTORY), (gameOptions, aBoolean) -> {
         GameRuleOptions.KEEP_INVENTORY = aBoolean;
         PersistentWriter.GLOBAL_WRITER.put("keepinventory", new JsonPrimitive(aBoolean));

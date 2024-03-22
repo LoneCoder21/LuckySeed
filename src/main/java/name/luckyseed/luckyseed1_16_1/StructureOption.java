@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class StructureOption {
-    public static StructureOption[] allowed_structures = {new StructureOption(StructureFeature.BURIED_TREASURE), new StructureOption(StructureFeature.DESERT_PYRAMID), new StructureOption(StructureFeature.RUINED_PORTAL)};
+    public static StructureOption[] allowed_structures = {new StructureOption(StructureFeature.BURIED_TREASURE), new StructureOption(StructureFeature.DESERT_PYRAMID), new StructureOption(StructureFeature.RUINED_PORTAL), new StructureOption(StructureFeature.VILLAGE)};
     public boolean allow_structure = true;
     public StructureFeature<?> feature;
 
@@ -30,5 +30,6 @@ public class StructureOption {
         BURIED_TREASURE,
         DESERT_PYRAMID,
         RUINED_PORTAL,
+        VILLAGE,
     }
 }
