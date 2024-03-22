@@ -29,6 +29,8 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
 
     private static final Identifier BURIED_CHEST_LOOT_TABLE_ID = LootTables.BURIED_TREASURE_CHEST;
 
+    private static final Identifier BASTION_CHEST_LOOT_TABLE_ID = LootTables.BASTION_OTHER_CHEST;
+
     private static final Identifier SHIPWRECK_TREASURE_CHEST_LOOT_TABLE_ID = LootTables.SHIPWRECK_TREASURE_CHEST;
 
     private static final Identifier SHIPWRECK_SUPPLY_CHEST_LOOT_TABLE_ID = LootTables.SHIPWRECK_SUPPLY_CHEST;
@@ -79,6 +81,14 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
                 supplier.pool(ironPool);
                 supplier.pool(codPool);
                 supplier.pool(salmonPool);
+            }
+
+            if (BASTION_CHEST_LOOT_TABLE_ID.equals(id)) {
+                FabricLootPoolBuilder obsidianPool = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootTableRange.create(1))
+                        .with(ItemEntry.builder(Items.OBSIDIAN)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(3, 4)).getThis().build());
+
+                supplier.pool(obsidianPool);
             }
 
             if (WEAPONSMITH_CHEST_LOOT_TABLE_ID.equals(id)) {
@@ -154,15 +164,10 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
             }
 
             if (PIGLIN_BARTER_LOOT_TABLE_ID.equals(id)) {
-                FabricLootPoolBuilder obsidianPool = FabricLootPoolBuilder.builder()
-                        .rolls(ConstantLootTableRange.create(1))
-                        .with(ItemEntry.builder(Items.OBSIDIAN));
-
                 FabricLootPoolBuilder pearlPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
                         .with(ItemEntry.builder(Items.ENDER_PEARL));
 
-                supplier.pool(obsidianPool);
                 supplier.pool(pearlPool);
             }
 
