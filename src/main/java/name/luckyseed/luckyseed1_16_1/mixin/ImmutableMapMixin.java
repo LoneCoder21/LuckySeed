@@ -1,7 +1,7 @@
 package name.luckyseed.luckyseed1_16_1.mixin;
 
 import com.google.common.collect.ImmutableMap;
-import net.minecraft.world.gen.chunk.StructureConfig;
+import name.luckyseed.luckyseed1_16_1.CustomStructureConfig;
 import net.minecraft.world.gen.feature.BastionRemnantFeature;
 import net.minecraft.world.gen.feature.NetherFortressFeature;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,11 +14,11 @@ public class ImmutableMapMixin {
     @ModifyArgs(method = "put(Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMap$Builder;", at = @At(value = "INVOKE", target = "com/google/common/collect/ImmutableMap.entryOf (Ljava/lang/Object;Ljava/lang/Object;)Lcom/google/common/collect/ImmutableMapEntry;"))
     private void changeStructureRates(Args args) {
         if(args.get(0) instanceof BastionRemnantFeature) {
-            args.set(1, new StructureConfig(12, 8, 30084232));
+            args.set(1, CustomStructureConfig.BastionRemnant);
         }
 
         if(args.get(0) instanceof NetherFortressFeature) {
-            args.set(1, new StructureConfig(15, 8, 30084232));
+            args.set(1, CustomStructureConfig.NetherFortress);
         }
     }
 }

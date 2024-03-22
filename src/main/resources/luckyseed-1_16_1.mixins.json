@@ -4,6 +4,7 @@
   "package": "name.luckyseed.luckyseed1_16_1.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "BastionRemnantFeatureMixin",
     "BiomeMixin",
     "BlockAgeStructureProcessorMixin",
     "ChunkRegionMixin",
@@ -13,6 +14,7 @@
     "FoodComponentsMixin",
     "ImmutableMapMixin",
     "LakeFeatureMixin",
+    "NetherFortressFeatureMixin",
     "OceanTemperatureLayerMixin",
     "PortalRoomMixin",
     "RandomBlockMatchRuleTestMixin",
