@@ -11,6 +11,9 @@ public class PersistentWriter {
     public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     public static final PersistentWriter GLOBAL_WRITER;
 
+    public static void init() {
+    }
+
     static {
         try {
             GLOBAL_WRITER = new PersistentWriter("config/LuckySeedConfig.json");

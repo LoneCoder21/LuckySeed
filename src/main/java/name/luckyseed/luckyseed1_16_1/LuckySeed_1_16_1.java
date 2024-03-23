@@ -1,6 +1,7 @@
 package name.luckyseed.luckyseed1_16_1;
 
 import name.luckyseed.luckyseed1_16_1.options.GameRuleOptions;
+import name.luckyseed.luckyseed1_16_1.options.GlobalOptions;
 import name.luckyseed.luckyseed1_16_1.options.ModOptions;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -41,7 +42,6 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
     private static final Identifier GRAVEL_LOOT_TABLE_ID = Blocks.GRAVEL.getLootTableId();
 
     private void setupLootTable() {
-
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, supplier, setter) -> {
             if (PYRAMID_CHEST_LOOT_TABLE_ID.equals(id)) {
                 FabricLootPoolBuilder ironPool = FabricLootPoolBuilder.builder()
@@ -202,8 +202,14 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
         ModOptions.ALLOW_ENDERMITE = PersistentWriter.GLOBAL_WRITER.getBoolValue("endermite", ModOptions.ALLOW_ENDERMITE);
     }
 
+    private void init() {
+        GlobalOptions.init();
+        PersistentWriter.init();
+    }
+
     @Override
     public void onInitialize() {
+        this.init();
         this.setupLootTable();
         this.setupOptions();
     }

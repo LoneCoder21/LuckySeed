@@ -6,6 +6,8 @@ import name.luckyseed.luckyseed1_16_1.StructureOption;
 import net.minecraft.client.options.BooleanOption;
 
 public class GlobalOptions {
+    public static void init() {
+    }
     public static final BooleanOption BURIED_TREASURE = new BooleanOption("Allow Buried Treasure", gameOptions -> StructureOption.allowed_structures[StructureOption.Structure.BURIED_TREASURE.ordinal()].allow_structure = PersistentWriter.GLOBAL_WRITER.getBoolValue("buriedtreasure", StructureOption.allowed_structures[StructureOption.Structure.BURIED_TREASURE.ordinal()].allow_structure), (gameOptions, aBoolean) -> {
         StructureOption.allowed_structures[StructureOption.Structure.BURIED_TREASURE.ordinal()].allow_structure = aBoolean;
         PersistentWriter.GLOBAL_WRITER.put("buriedtreasure", new JsonPrimitive(aBoolean));
