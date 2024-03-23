@@ -17,13 +17,9 @@ import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.util.Identifier;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 @Environment(EnvType.CLIENT)
 public class LuckySeed_1_16_1 implements ModInitializer  {
-    public static final Logger LOGGER = LogManager.getLogger("luckyseed");
-
     private static final Identifier WEAPONSMITH_CHEST_LOOT_TABLE_ID = LootTables.VILLAGE_WEAPONSMITH_CHEST;
     private static final Identifier PYRAMID_CHEST_LOOT_TABLE_ID = LootTables.DESERT_PYRAMID_CHEST;
 
