@@ -11,6 +11,7 @@
     "DefaultBiomeFeaturesMixin",
     "ExampleMixin",
     "EyeofEnderEntityMixin",
+    "FeatureMixin",
     "FoodComponentsMixin",
     "ImmutableMapMixin",
     "LakeFeatureMixin",

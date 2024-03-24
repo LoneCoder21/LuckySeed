@@ -2,10 +2,7 @@ package name.luckyseed.luckyseed1_16_1.mixin;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.structure.pool.LegacySinglePoolElement;
-import net.minecraft.structure.pool.SinglePoolElement;
-import net.minecraft.structure.pool.StructurePool;
-import net.minecraft.structure.pool.StructurePoolElement;
+import net.minecraft.structure.pool.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -24,8 +21,8 @@ public class StructurePoolMixin {
                 LegacySinglePoolElement e = (LegacySinglePoolElement) curpair.getFirst();
 
                 String id = e.toString();
-                if (id.contains("weaponsmith")) {
-                    curpair = new Pair<>(e, 26);
+                if (id.contains("village/plains/houses/plains_weaponsmith_1") || id.contains("village/savanna/houses/savanna_weaponsmith_2") || id.contains("village/snowy/houses/snowy_weapon_smith_1")) {
+                    curpair = new Pair<>(e, 40);
                 }
             } else if (curpair.getFirst() instanceof SinglePoolElement) {
                 SinglePoolElement e = (SinglePoolElement) curpair.getFirst();
@@ -33,6 +30,14 @@ public class StructurePoolMixin {
                 String id = e.toString();
                 if (id.contains("bastion/bridge/ramparts/rampart_1") || id.contains("bastion/hoglin_stable/ramparts/ramparts_1") || id.contains("bastion/hoglin_stable/walls/side_wall_1") || id.contains("bastion/units/ramparts/ramparts_0")) {
                     curpair = new Pair<>(e, 99);
+                }
+            } else if (curpair.getFirst() instanceof FeaturePoolElement) {
+                FeaturePoolElement e = (FeaturePoolElement) curpair.getFirst();
+
+                String id = e.toString();
+                System.out.println(id);
+                if (id.contains("minecraft:block_pile")) {
+                    curpair = new Pair<>(e, 15);
                 }
             }
             copy.add(curpair);

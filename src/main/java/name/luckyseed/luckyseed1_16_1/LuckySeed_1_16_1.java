@@ -94,7 +94,7 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
 
                 FabricLootPoolBuilder obsidianPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
-                        .with(ItemEntry.builder(Items.OBSIDIAN)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(8, 9)).getThis().build());
+                        .with(ItemEntry.builder(Items.OBSIDIAN)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(9, 10)).getThis().build());
 
                 FabricLootPoolBuilder breadPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
