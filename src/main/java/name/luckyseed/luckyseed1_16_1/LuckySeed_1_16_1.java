@@ -8,14 +8,20 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Items;
 import net.minecraft.loot.ConstantLootTableRange;
+import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.UniformLootTableRange;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.EnchantRandomlyLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.loot.function.SetNbtLootFunction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Util;
 
 @Environment(EnvType.CLIENT)
 public class LuckySeed_1_16_1 implements ModInitializer  {
@@ -146,11 +152,27 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
             }
 
             if (PIGLIN_BARTER_LOOT_TABLE_ID.equals(id)) {
-                FabricLootPoolBuilder pearlPool = FabricLootPoolBuilder.builder()
+                FabricLootPoolBuilder barterPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
-                        .with(ItemEntry.builder(Items.ENDER_PEARL));
+                        .with(ItemEntry.builder(Items.BOOK).weight(5).apply(new EnchantRandomlyLootFunction.Builder().add(Enchantments.SOUL_SPEED)))
+                        .with(ItemEntry.builder(Items.IRON_BOOTS).weight(15).apply(new EnchantRandomlyLootFunction.Builder().add(Enchantments.SOUL_SPEED)))
+                        .with(ItemEntry.builder(Items.POTION).weight(15).apply(SetNbtLootFunction.builder(Util.make(new CompoundTag(), compoundTag -> compoundTag.putString("Potion", "minecraft:fire_resistance")))))
+                        .with(ItemEntry.builder(Items.SPLASH_POTION).weight(25).apply(SetNbtLootFunction.builder(Util.make(new CompoundTag(), compoundTag -> compoundTag.putString("Potion", "minecraft:fire_resistance")))))
+                        .with(ItemEntry.builder(Items.IRON_NUGGET).weight(10).apply(SetCountLootFunction.builder(UniformLootTableRange.between(9, 36))))
+                        .with(ItemEntry.builder(Items.QUARTZ).weight(10).apply(SetCountLootFunction.builder(UniformLootTableRange.between(8, 16))))
+                        .with(ItemEntry.builder(Items.GLOWSTONE_DUST).weight(20).apply(SetCountLootFunction.builder(UniformLootTableRange.between(10, 12))))
+                        .with(ItemEntry.builder(Items.MAGMA_CREAM).weight(10).apply(SetCountLootFunction.builder(UniformLootTableRange.between(2, 6))))
+                        .with(ItemEntry.builder(Items.ENDER_PEARL).weight(30).apply(SetCountLootFunction.builder(UniformLootTableRange.between(9, 11))))
+                        .with(ItemEntry.builder(Items.STRING).weight(30).apply(SetCountLootFunction.builder(UniformLootTableRange.between(15, 20))))
+                        .with(ItemEntry.builder(Items.FIRE_CHARGE).weight(15).apply(SetCountLootFunction.builder(UniformLootTableRange.between(1, 5))))
+                        .with(ItemEntry.builder(Items.GRAVEL).weight(30).apply(SetCountLootFunction.builder(UniformLootTableRange.between(8, 16))))
+                        .with(ItemEntry.builder(Items.LEATHER).weight(20).apply(SetCountLootFunction.builder(UniformLootTableRange.between(4, 10))))
+                        .with(ItemEntry.builder(Items.NETHER_BRICK).weight(40).apply(SetCountLootFunction.builder(UniformLootTableRange.between(4, 16))))
+                        .with(ItemEntry.builder(Items.OBSIDIAN).weight(40).apply(SetCountLootFunction.builder(UniformLootTableRange.between(1, 3))))
+                        .with(ItemEntry.builder(Items.CRYING_OBSIDIAN).weight(40).apply(SetCountLootFunction.builder(UniformLootTableRange.between(1, 3))))
+                        .with(ItemEntry.builder(Items.SOUL_SAND).weight(20).apply(SetCountLootFunction.builder(UniformLootTableRange.between(4, 16))));
 
-                supplier.pool(pearlPool);
+                setter.set(LootTable.builder().pool(barterPool).build());
             }
 
             if (BLAZE_LOOT_TABLE_ID.equals(id)) {
@@ -158,7 +180,7 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
                         .rolls(ConstantLootTableRange.create(1))
                         .with(ItemEntry.builder(Items.BLAZE_ROD));
 
-                supplier.pool(rodPool);
+                setter.set(LootTable.builder().pool(rodPool).build());
             }
 
             if (ENDERMEN_LOOT_TABLE_ID.equals(id)) {
@@ -166,7 +188,7 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
                         .rolls(ConstantLootTableRange.create(1))
                         .with(ItemEntry.builder(Items.ENDER_PEARL));
 
-                supplier.pool(pearlPool);
+                setter.set(LootTable.builder().pool(pearlPool).build());
             }
         });
     }
