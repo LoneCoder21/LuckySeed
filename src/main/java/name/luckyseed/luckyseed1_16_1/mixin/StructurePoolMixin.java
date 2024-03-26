@@ -37,7 +37,7 @@ public class StructurePoolMixin {
                 String id = e.toString();
                 System.out.println(id);
                 if (id.contains("minecraft:block_pile")) {
-                    curpair = new Pair<>(e, 15);
+                    curpair = new Pair<>(e, 12);
                 }
             }
             copy.add(curpair);
