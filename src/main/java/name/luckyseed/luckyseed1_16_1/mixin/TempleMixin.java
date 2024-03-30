@@ -32,7 +32,7 @@ public class TempleMixin {
         boolean satisfied = false;
         int tries = 100;
         while (!satisfied && tries > 0) {
-            int radius = 35;
+            int radius = 32;
             float angle = random.nextFloat() * (float) Math.PI * 2.0f;
 
             int rx = (int) (radius * MathHelper.cos(angle)) + blockPos.getX();
