@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class UnderwaterCaveCarverMixin {
     @ModifyConstant(method = "carveAtPoint(Lnet/minecraft/world/gen/carver/Carver;Lnet/minecraft/world/chunk/Chunk;Ljava/util/BitSet;Ljava/util/Random;Lnet/minecraft/util/math/BlockPos$Mutable;IIIIIIII)Z", constant = @Constant(intValue = 10))
     private static int increaseMagmaLayerHeight(int value) {
-        return 25;
+        return 10;
     }
 
     @ModifyConstant(method = "carveAtPoint(Lnet/minecraft/world/gen/carver/Carver;Lnet/minecraft/world/chunk/Chunk;Ljava/util/BitSet;Ljava/util/Random;Lnet/minecraft/util/math/BlockPos$Mutable;IIIIIIII)Z", constant = @Constant(doubleValue = 0.25))
