@@ -22,7 +22,7 @@ import java.util.Random;
 
 @Mixin(DesertTempleGenerator.class)
 public class TempleMixin {
-    @Inject(at = @At("TAIL"), method = "generate(Lnet/minecraft/world/ServerWorldAccess;Lnet/minecraft/world/gen/StructureAccessor;Lnet/minecraft/world/gen/chunk/ChunkGenerator;Ljava/util/Random;Lnet/minecraft/util/math/BlockBox;Lnet/minecraft/util/math/ChunkPos;Lnet/minecraft/util/math/BlockPos;)Z")
+    @Inject(at = @At("HEAD"), method = "generate(Lnet/minecraft/world/ServerWorldAccess;Lnet/minecraft/world/gen/StructureAccessor;Lnet/minecraft/world/gen/chunk/ChunkGenerator;Ljava/util/Random;Lnet/minecraft/util/math/BlockBox;Lnet/minecraft/util/math/ChunkPos;Lnet/minecraft/util/math/BlockPos;)Z")
     private void detectTemple(ServerWorldAccess serverWorldAccess, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, Random random, BlockBox boundingBox, ChunkPos chunkPos, BlockPos blockPos, CallbackInfoReturnable<Boolean> cir) {
         if (!(serverWorldAccess instanceof ChunkRegion)) {
             return;
@@ -30,13 +30,10 @@ public class TempleMixin {
         ChunkRegion region = (ChunkRegion) serverWorldAccess;
 
         boolean satisfied = false;
-        int tries = 100;
-        while (!satisfied && tries > 0) {
-            int radius = 32;
-            float angle = random.nextFloat() * (float) Math.PI * 2.0f;
-
-            int rx = (int) (radius * MathHelper.cos(angle)) + blockPos.getX();
-            int rz = (int) (radius * MathHelper.sin(angle)) + blockPos.getZ();
+        while (!satisfied) {
+            int blocks = 4 * 16;
+            int rx = MathHelper.nextInt(random, blockPos.getX() - blocks, blockPos.getX() + blocks);
+            int rz = MathHelper.nextInt(random, blockPos.getZ() - blocks, blockPos.getZ() + blocks);
             int ry = region.getTopY(Heightmap.Type.WORLD_SURFACE, rx, rz);
             BlockPos pos = new BlockPos(rx, ry, rz);
 
@@ -45,7 +42,6 @@ public class TempleMixin {
                 LakeFeature feature = new LakeFeature(SingleStateFeatureConfig.CODEC);
                 satisfied = feature.generate(serverWorldAccess, structureAccessor,  chunkGenerator, random, pos, config);
             }
-            tries--;
         }
     }
 }
