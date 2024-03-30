@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(Feature.class)
-
 public class FeatureMixin {
     @ModifyVariable(method = "configure(Lnet/minecraft/world/gen/feature/FeatureConfig;)Lnet/minecraft/world/gen/feature/ConfiguredFeature;", at = @At("HEAD"), argsOnly = true)
     private FeatureConfig modifyPlacements(FeatureConfig value) {
