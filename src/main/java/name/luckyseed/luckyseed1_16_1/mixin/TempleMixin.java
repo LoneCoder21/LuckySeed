@@ -30,9 +30,9 @@ public class TempleMixin {
         ChunkRegion region = (ChunkRegion) serverWorldAccess;
 
         boolean satisfied = false;
-        int tries = 20;
+        int tries = 100;
         while (!satisfied && tries > 0) {
-            int radius = 30;
+            int radius = 35;
             float angle = random.nextFloat() * (float) Math.PI * 2.0f;
 
             int rx = (int) (radius * MathHelper.cos(angle)) + blockPos.getX();
