@@ -70,11 +70,11 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
 
                 FabricLootPoolBuilder codPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
-                        .with(ItemEntry.builder(Items.COOKED_COD)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(2, 4)).getThis().build());
+                        .with(ItemEntry.builder(Items.COOKED_COD)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(1, 2)).getThis().build());
 
                 FabricLootPoolBuilder salmonPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
-                        .with(ItemEntry.builder(Items.COOKED_SALMON)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(2, 4)).getThis().build());
+                        .with(ItemEntry.builder(Items.COOKED_SALMON)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(1, 2)).getThis().build());
 
                 supplier.pool(ironPool);
                 supplier.pool(codPool);
@@ -92,7 +92,7 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
             if (WEAPONSMITH_CHEST_LOOT_TABLE_ID.equals(id)) {
                 FabricLootPoolBuilder ironPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
-                        .with(ItemEntry.builder(Items.IRON_INGOT)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(4, 7)).getThis().build());
+                        .with(ItemEntry.builder(Items.IRON_INGOT)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(4, 5)).getThis().build());
 
                 FabricLootPoolBuilder obsidianPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
@@ -139,11 +139,11 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
 
                 FabricLootPoolBuilder obsidianPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
-                        .with(ItemEntry.builder(Items.OBSIDIAN)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(6, 8)).getThis().build());
+                        .with(ItemEntry.builder(Items.OBSIDIAN)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(6, 7)).getThis().build());
 
                 FabricLootPoolBuilder goldenCarrotPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
-                        .with(ItemEntry.builder(Items.GOLDEN_CARROT)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(7, 8)).getThis().build());
+                        .with(ItemEntry.builder(Items.GOLDEN_CARROT)).withFunction(SetCountLootFunction.builder(UniformLootTableRange.between(3, 6)).getThis().build());
 
                 supplier.pool(firechargePool);
                 supplier.pool(nuggetPool);
