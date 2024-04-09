@@ -175,7 +175,7 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
                 setter.set(LootTable.builder().pool(barterPool).build());
             }
 
-            if (BLAZE_LOOT_TABLE_ID.equals(id)) {
+            if (BLAZE_LOOT_TABLE_ID.equals(id) && ModOptions.ALLOW_MAX_BLAZE_ROD_CHANCE) {
                 FabricLootPoolBuilder rodPool = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootTableRange.create(1))
                         .with(ItemEntry.builder(Items.BLAZE_ROD));
@@ -200,6 +200,7 @@ public class LuckySeed_1_16_1 implements ModInitializer  {
         StructureOption.allowed_structures[StructureOption.Structure.VILLAGE.ordinal()].allow_structure = PersistentWriter.GLOBAL_WRITER.getBoolValue("village", StructureOption.allowed_structures[StructureOption.Structure.VILLAGE.ordinal()].allow_structure);
         GameRuleOptions.KEEP_INVENTORY = PersistentWriter.GLOBAL_WRITER.getBoolValue("keepinventory", GameRuleOptions.KEEP_INVENTORY);
         ModOptions.ALLOW_EYEBREAK = PersistentWriter.GLOBAL_WRITER.getBoolValue("eyebreak", ModOptions.ALLOW_EYEBREAK);
+        ModOptions.ALLOW_MAX_BLAZE_ROD_CHANCE = PersistentWriter.GLOBAL_WRITER.getBoolValue("blazedrop", ModOptions.ALLOW_MAX_BLAZE_ROD_CHANCE);
         ModOptions.ALLOW_DROWNED = PersistentWriter.GLOBAL_WRITER.getBoolValue("drowned", ModOptions.ALLOW_DROWNED);
         ModOptions.ALLOW_ENDERMITE = PersistentWriter.GLOBAL_WRITER.getBoolValue("endermite", ModOptions.ALLOW_ENDERMITE);
     }

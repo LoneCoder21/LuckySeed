@@ -38,6 +38,11 @@ public class GlobalOptions {
         PersistentWriter.GLOBAL_WRITER.put("eyebreak", new JsonPrimitive(aBoolean));
     });
 
+    public static final BooleanOption ALLOW_MAX_BLAZE_ROD_CHANCE = new BooleanOption("Allow Max Blaze Rod Chance", gameOptions -> ModOptions.ALLOW_MAX_BLAZE_ROD_CHANCE = PersistentWriter.GLOBAL_WRITER.getBoolValue("blazedrop", ModOptions.ALLOW_MAX_BLAZE_ROD_CHANCE), (gameOptions, aBoolean) -> {
+        ModOptions.ALLOW_MAX_BLAZE_ROD_CHANCE = aBoolean;
+        PersistentWriter.GLOBAL_WRITER.put("blazedrop", new JsonPrimitive(aBoolean));
+    });
+
     public static final BooleanOption ALLOW_DROWNED = new BooleanOption("Allow Drowned Spawn", gameOptions -> ModOptions.ALLOW_DROWNED = PersistentWriter.GLOBAL_WRITER.getBoolValue("drowned", ModOptions.ALLOW_DROWNED), (gameOptions, aBoolean) -> {
         ModOptions.ALLOW_DROWNED = aBoolean;
         PersistentWriter.GLOBAL_WRITER.put("drowned", new JsonPrimitive(aBoolean));

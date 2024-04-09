@@ -19,6 +19,7 @@ public class ModOptionsScreen extends Screen {
     public ButtonWidget allowRuinedPortal;
     public ButtonWidget allowVillage;
     public ButtonWidget allowEyeBreak;
+    public ButtonWidget allowFullBlazeDrop;
     public ButtonWidget allowDrowned;
     public ButtonWidget allowEndermite;
 
@@ -34,63 +35,75 @@ public class ModOptionsScreen extends Screen {
     @Override
     protected void init() {
         if (client == null) return;
-        this.allowBuriedTreasure = this.addButton(new OptionButtonWidget(this.width / 2 - 150 - 10, 21, 150, 20, GlobalOptions.BURIED_TREASURE, GlobalOptions.BURIED_TREASURE.getDisplayString(this.client.options), buttonWidget -> {
+        final int width = 180;
+        final int width_h = width / 2;
+        this.allowBuriedTreasure = this.addButton(new OptionButtonWidget(this.width / 2 - width - 10, 21, width, 20, GlobalOptions.BURIED_TREASURE, GlobalOptions.BURIED_TREASURE.getDisplayString(this.client.options), buttonWidget -> {
             GlobalOptions.BURIED_TREASURE.set(this.client.options);
             this.client.options.write();
             buttonWidget.setMessage(GlobalOptions.BURIED_TREASURE.getDisplayString(this.client.options));
             this.client.onResolutionChanged();
         }));
 
-        this.allowDesertPyramid = this.addButton(new OptionButtonWidget(this.width / 2 + 10, 21, 150, 20, GlobalOptions.DESERT_PYRAMID, GlobalOptions.DESERT_PYRAMID.getDisplayString(this.client.options), buttonWidget -> {
+        this.allowDesertPyramid = this.addButton(new OptionButtonWidget(this.width / 2 + 10, 21, width, 20, GlobalOptions.DESERT_PYRAMID, GlobalOptions.DESERT_PYRAMID.getDisplayString(this.client.options), buttonWidget -> {
             GlobalOptions.DESERT_PYRAMID.set(this.client.options);
             this.client.options.write();
             buttonWidget.setMessage(GlobalOptions.DESERT_PYRAMID.getDisplayString(this.client.options));
             this.client.onResolutionChanged();
         }));
 
-        this.allowRuinedPortal = this.addButton(new OptionButtonWidget(this.width / 2 - 150 - 10, 45, 150, 20, GlobalOptions.RUINED_PORTAL, GlobalOptions.RUINED_PORTAL.getDisplayString(this.client.options), buttonWidget -> {
+        this.allowRuinedPortal = this.addButton(new OptionButtonWidget(this.width / 2 - width - 10, 45, width, 20, GlobalOptions.RUINED_PORTAL, GlobalOptions.RUINED_PORTAL.getDisplayString(this.client.options), buttonWidget -> {
             GlobalOptions.RUINED_PORTAL.set(this.client.options);
             this.client.options.write();
             buttonWidget.setMessage(GlobalOptions.RUINED_PORTAL.getDisplayString(this.client.options));
             this.client.onResolutionChanged();
         }));
 
-        this.allowVillage = this.addButton(new OptionButtonWidget(this.width / 2 + 10, 45, 150, 20, GlobalOptions.VILLAGE, GlobalOptions.VILLAGE.getDisplayString(this.client.options), buttonWidget -> {
+        this.allowVillage = this.addButton(new OptionButtonWidget(this.width / 2 + 10, 45, width, 20, GlobalOptions.VILLAGE, GlobalOptions.VILLAGE.getDisplayString(this.client.options), buttonWidget -> {
             GlobalOptions.VILLAGE.set(this.client.options);
             this.client.options.write();
             buttonWidget.setMessage(GlobalOptions.VILLAGE.getDisplayString(this.client.options));
             this.client.onResolutionChanged();
         }));
 
-        this.keepInventory = this.addButton(new OptionButtonWidget(this.width / 2 - 75, 88, 150, 20, GlobalOptions.KEEP_INVENTORY, GlobalOptions.KEEP_INVENTORY.getDisplayString(this.client.options), buttonWidget -> {
+        this.keepInventory = this.addButton(new OptionButtonWidget(this.width / 2 - width_h, 88, width, 20, GlobalOptions.KEEP_INVENTORY, GlobalOptions.KEEP_INVENTORY.getDisplayString(this.client.options), buttonWidget -> {
             GlobalOptions.KEEP_INVENTORY.set(this.client.options);
             this.client.options.write();
             buttonWidget.setMessage(GlobalOptions.KEEP_INVENTORY.getDisplayString(this.client.options));
             this.client.onResolutionChanged();
         }));
 
-        this.allowEyeBreak = this.addButton(new OptionButtonWidget(this.width / 2 - 75, 88 + 24 * 1, 150, 20, GlobalOptions.ALLOW_EYEBREAK, GlobalOptions.ALLOW_EYEBREAK.getDisplayString(this.client.options), buttonWidget -> {
+        this.allowEyeBreak = this.addButton(new OptionButtonWidget(this.width / 2 - width_h, 88 + 24 * 1, width, 20, GlobalOptions.ALLOW_EYEBREAK, GlobalOptions.ALLOW_EYEBREAK.getDisplayString(this.client.options), buttonWidget -> {
             GlobalOptions.ALLOW_EYEBREAK.set(this.client.options);
             this.client.options.write();
             buttonWidget.setMessage(GlobalOptions.ALLOW_EYEBREAK.getDisplayString(this.client.options));
             this.client.onResolutionChanged();
         }));
 
-        this.allowDrowned = this.addButton(new OptionButtonWidget(this.width / 2 - 75, 88 + 24 * 2, 150, 20, GlobalOptions.ALLOW_DROWNED, GlobalOptions.ALLOW_DROWNED.getDisplayString(this.client.options), buttonWidget -> {
+        this.allowFullBlazeDrop = this.addButton(new OptionButtonWidget(this.width / 2 - width_h, 88 + 24 * 2, width, 20, GlobalOptions.ALLOW_MAX_BLAZE_ROD_CHANCE, GlobalOptions.ALLOW_MAX_BLAZE_ROD_CHANCE.getDisplayString(this.client.options), buttonWidget -> {
+            GlobalOptions.ALLOW_MAX_BLAZE_ROD_CHANCE.set(this.client.options);
+            this.client.options.write();
+            buttonWidget.setMessage(GlobalOptions.ALLOW_MAX_BLAZE_ROD_CHANCE.getDisplayString(this.client.options));
+            this.client.onResolutionChanged();
+        }));
+
+        this.allowDrowned = this.addButton(new OptionButtonWidget(this.width / 2 - width_h, 88 + 24 * 3, width, 20, GlobalOptions.ALLOW_DROWNED, GlobalOptions.ALLOW_DROWNED.getDisplayString(this.client.options), buttonWidget -> {
             GlobalOptions.ALLOW_DROWNED.set(this.client.options);
             this.client.options.write();
             buttonWidget.setMessage(GlobalOptions.ALLOW_DROWNED.getDisplayString(this.client.options));
             this.client.onResolutionChanged();
         }));
 
-        this.allowEndermite = this.addButton(new OptionButtonWidget(this.width / 2 - 75, 88 + 24 * 3, 150, 20, GlobalOptions.ALLOW_ENDERMITE, GlobalOptions.ALLOW_ENDERMITE.getDisplayString(this.client.options), buttonWidget -> {
+        this.allowEndermite = this.addButton(new OptionButtonWidget(this.width / 2 - width_h, 88 + 24 * 4, width, 20, GlobalOptions.ALLOW_ENDERMITE, GlobalOptions.ALLOW_ENDERMITE.getDisplayString(this.client.options), buttonWidget -> {
             GlobalOptions.ALLOW_ENDERMITE.set(this.client.options);
             this.client.options.write();
             buttonWidget.setMessage(GlobalOptions.ALLOW_ENDERMITE.getDisplayString(this.client.options));
             this.client.onResolutionChanged();
         }));
 
-        this.addButton(new ButtonWidget(this.width / 2 - 100, this.height - 27, 200, 20, ScreenTexts.DONE, button -> {
+        final int donewidth = 220;
+        final int donewidth_h = donewidth / 2;
+
+        this.addButton(new ButtonWidget(this.width / 2 - donewidth_h, this.height - 27, donewidth, 20, ScreenTexts.DONE, button -> {
             this.client.options.write();
             this.closeScreen();
         }));
