@@ -7,10 +7,8 @@ many options you can configure for preference.
 
 ## Install
 
-- Since this mod uses fabric api, you first need the api with the right version. Get the api
-  jar [here](https://modrinth.com/mod/fabric-api/version/0.18.0+build.387-1.16.1)
 - Go to [Releases Page](https://github.com/LoneCoder21/LuckySeed/releases) and get the latest jar
-- Place both jar files in your mods folder
+- Place the jar file in your mods folder
 
 ## Fabric Loader
 
